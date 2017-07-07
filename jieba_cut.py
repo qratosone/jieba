@@ -5,4 +5,4 @@ word_list=[]
 for line in file:
     seg_list=jieba.cut(line)
     word_list.extend(seg_list)
-print ", ".join(word_list)
+print (", ".join(word_list))

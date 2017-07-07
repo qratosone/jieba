@@ -8,4 +8,4 @@ for line in file:
         if word not in word_pseg_dict:
             word_pseg_dict[word]=flag
 for key in word_pseg_dict:
-    print key,word_pseg_dict[key]
+    print(key,word_pseg_dict[key])

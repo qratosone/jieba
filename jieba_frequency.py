@@ -11,6 +11,6 @@ for item in word_list:
         word_dict[item]=1
     else:
         word_dict[item]+=1
-word_dict_list=sorted(word_dict.iteritems(),key=lambda item: item[1],reverse=True)
+word_dict_list=sorted(word_dict.items(),key=lambda item: item[1],reverse=True)
 for key in word_dict_list:
-    print key[0],key[1]
+    print (key[0],key[1])
