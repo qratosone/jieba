@@ -17,7 +17,21 @@ def get_frequency(file):
     word_dict_list=sorted(word_dict.items(),key=lambda item: item[1],reverse=True)
     return word_dict_list
 
-
+def get_word_list(file):
+    import jieba
+    word_list=[]
+    for line in file:
+        seg_list=jieba.cut(line)
+        word_list.extend(seg_list)
+    return word_list
+def get_posseg(file):
+    import jieba.posseg as pseg
+    word_pseg_dict={}
+    for line in file:
+        words=pseg.cut(line)
+        for word,flag in words:
+            if word not in word_pseg_dict:
+                word_pseg_dict[word]=flag
 
 
 import argparse
