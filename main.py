@@ -39,18 +39,14 @@ def get_posseg_list(filename):
 
 def list_dir_recur(root_dir):
     import os              
-    list_all=[]                         
+    list_files=[]                         
     for object_in_dir in os.listdir(root_dir):
         if os.path.isdir(os.path.join(root_dir,object_in_dir)):
             list_recur=list_dir_recur(os.path.join(root_dir,object_in_dir))
-            list_all.extend(list_recur)
+            list_files.extend(list_recur)
         else:
-            print(os.path.join(root_dir,object_in_dir))                 
-            fr=open(os.path.join(root_dir,object_in_dir),'r')
-            for line in fr:
-                line_add = line.strip().replace('\n', '').replace('\r', '').strip()
-                list_all.append(line_add)
-    return list_all
+            list_files.append(os.path.join(root_dir,object_in_dir))
+    return list_files
 
 def write_list(file_output,list_to_write):
     f=open(file_output,"w+")
@@ -106,6 +102,9 @@ if filename_input:
     else:
         print("directory input:",filename_input)
         file_list=list_dir_recur(filename_input)
+        for file in file_list:
+            list_file=operate(flag_f,flag_l,flag_p,filename_input)
+            list_total.extend(list_file)
 if filename_output:
     print("file output:",filename_output)
     write_list(filename_output,list_total)
